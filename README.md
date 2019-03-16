@@ -24,4 +24,4 @@ When you first start DMOJ, there will be no users in the DB. Run the following a
 `docker-compose run --rm site python manage.py createsuperuser`
 
 ## Configuring judge
-By default, `docker-compose.yml` defines one judge container. You will need to configure its secret in `judge/config.yml` and in DMOJ admin interface before it will successfully connect.
+By default, `docker-compose.yml` defines one judge container. You will need to configure its secret in `judge/config.yml` and in DMOJ admin interface before it will successfully connect. Please rebuild judge image when you update `judge/config.yml` file.
