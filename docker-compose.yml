@@ -1,0 +1,34 @@
+version: '3.5'
+services:
+  site:
+    build:
+      context: ./site/
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    networks:
+      - dmoj
+  judge:
+    build:
+      context: ./judge/
+    privileged: true
+    volumes:
+      - ./data/problems:/app/problems
+    networks:
+      - dmoj
+  db:
+    image: mariadb:latest
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=set-to-something-secure
+      - MYSQL_DATABASE=dmoj
+      - MYSQL_USER=dmoj
+      - MYSQL_PASSWORD=set-to-something-secure
+    networks:
+      - dmoj
+
+networks:
+  dmoj:
+    name: dmoj
