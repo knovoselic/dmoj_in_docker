@@ -27,3 +27,4 @@ runtime:
   ruby2: /usr/bin/ruby
   sed: /bin/sed
   tclsh: /usr/bin/tclsh
+  v8dmoj: /usr/bin/v8dmoj
