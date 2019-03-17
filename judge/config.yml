@@ -22,6 +22,7 @@ runtime:
   mono: /usr/bin/mono
   mono-csc: /usr/bin/mono-csc
   perl: /usr/bin/perl
+  php: /usr/bin/php
   python: /usr/local/bin/python2.7
   python3: /usr/bin/python3.5
   ruby2: /usr/bin/ruby

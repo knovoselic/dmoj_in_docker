@@ -8,7 +8,8 @@ RUN set -ex \
         libseccomp-dev \
         apt-transport-https \
         ruby2.3 \
-        openjdk-8-jdk-headless
+        openjdk-8-jdk-headless \
+        php7.0
 
 RUN set -ex \
  && wget -O - "https://get.sdkman.io" | bash \
