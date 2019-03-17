@@ -19,13 +19,14 @@ services:
       - dmoj
   db:
     image: mariadb:latest
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./data/mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=set-to-something-secure
       - MYSQL_DATABASE=dmoj
       - MYSQL_USER=dmoj
-      - MYSQL_PASSWORD=set-to-something-secure
+      - MYSQL_PASSWORD=secure-password-for-dmoj-db
     networks:
       - dmoj
 
