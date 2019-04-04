@@ -24,11 +24,20 @@ RUN set -ex \
  && apt-get install -y --no-install-recommends mono-devel v8dmoj \
  && rm -rf /var/lib/apt/lists/*
 
+RUN cd /tmp/ \
+ && wget https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz \
+ && tar -xvf go1.12.1.linux-amd64.tar.gz \
+ && mv go /usr/local/ \
+ && rm go1.12.1.linux-amd64.tar.gz
+
 RUN set -ex \
   && mkdir /app \
   && cd /app \
   && git clone https://github.com/DMOJ/judge.git
 WORKDIR /app/judge
+
+# Needed for self-testing Go, otherwise it (for some reason) runs out of memory
+RUN sed -i "s/'selftest_memory_limit': .*/'selftest_memory_limit': 131072,  # 128MB of RAM/g" dmoj/judgeenv.py
 
 RUN set -ex && git submodule update --init --recursive
 RUN set -ex && pip install cython
