@@ -36,9 +36,6 @@ RUN set -ex \
   && git clone https://github.com/DMOJ/judge.git
 WORKDIR /app/judge
 
-# Needed for self-testing Go, otherwise it (for some reason) runs out of memory
-RUN sed -i "s/'selftest_memory_limit': .*/'selftest_memory_limit': 131072,  # 128MB of RAM/g" dmoj/judgeenv.py
-
 RUN set -ex && git submodule update --init --recursive
 RUN set -ex && pip install cython
 RUN set -ex && pip install -e .
